@@ -1,0 +1,115 @@
+
+
+<form (ngSubmit)="!overviewForm.invalid && saveOverview()" #overviewForm="ngForm">
+
+    <div class="container">
+        <h1>
+            
+            {{overviewModel.title| json}} 
+        </h1>
+        <h2>Overview</h2>
+    </div>
+
+    <div class="column">
+        <hr>
+        <div class="row">
+            <div class="input-group input-group-sm ">
+                <input type="text" 
+                class="form-control"
+                name="brandName"
+                placeholder="Brand Name"
+                [(ngModel)]="overviewModel.brandName"
+                >
+            </div>
+            <div class="input-group input-group-sm ">
+                <input 
+                type="text" 
+                class="form-control" 
+                name="title"
+                placeholder="Title"
+                [(ngModel)]="overviewModel.title"
+                >
+            </div>
+            <div class="input-group input-group-sm ">
+                <input 
+                type="text" 
+                class="form-control" 
+                name="season"
+                placeholder="Season"
+                [(ngModel)]="overviewModel.season"
+                >
+            </div>
+            <div class="input-group input-group-sm">
+                <input 
+                type="text" 
+                class="form-control" 
+                name="category"
+                placeholder="Category"
+                [(ngModel)]="overviewModel.category"
+                >
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-group input-group-sm ">
+                <input 
+                type="text" 
+                class="form-control" 
+                name="mainColor"
+                placeholder="Main Color"
+                [(ngModel)]="overviewModel.mainColor"
+                >
+            </div>
+            <div class="input-group input-group-sm ">
+                <input 
+                type="text" 
+                class="form-control" 
+                name="mainMaterial"
+                placeholder="Main Material"
+                [(ngModel)]="overviewModel.mainMaterial"
+                >
+            </div>
+            <div class="input-group input-group-sm ">
+                <input 
+                type="text" 
+                class="form-control" 
+                name="sizes"
+                placeholder="Sizes"
+                [(ngModel)]="overviewModel.sizes"
+                >
+            </div>
+            <div class="input-group input-group-sm ">
+                <input 
+                type="text" 
+                class="form-control" 
+                name="gender"
+                placeholder="Gender"
+                [(ngModel)]="overviewModel.gender"
+                >
+            </div>
+            <div class="input-group input-group-sm">
+                <input 
+                type="date" 
+                class="form-control" 
+                name="date"
+                [ngModel]="overviewModel.date | date:'yyyy-MM-dd'"
+                (ngModelChange)="overviewModel.date = $event"
+                >
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-group input-group-sm mb-3">
+                <input 
+                type="text" 
+                class="form-control" 
+                name="description"
+                placeholder="Description"
+                [(ngModel)]="overviewModel.description"
+                >
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success" >Save</button>
+        <button type="button" class="btn btn-success" >Upload Image</button>
+    </div>
+</form>
+
+

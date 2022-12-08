@@ -1,0 +1,31 @@
+.pageContainer{
+    position: relative;
+    min-width: fit-content;
+}
+
+.container{
+    margin: 0%;
+    min-width: fit-content;
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 50px;
+}
+
+.right{
+    min-width: fit-content;
+}
+
+.body{
+    align-self: flex-end;
+}
+
+footer{
+    width: 100%;
+    bottom: 0;
+}
+
+app-footer{
+    width: 100%;
+    display: flex;
+    align-self: strech;
+}

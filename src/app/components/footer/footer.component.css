@@ -1,0 +1,7 @@
+.container{
+    background-color: #DAD8D8;
+    /* width: 100%; */
+    margin: 0%;
+    display: flex;
+    align-self: strech;
+}

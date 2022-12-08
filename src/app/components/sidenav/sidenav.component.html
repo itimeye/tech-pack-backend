@@ -1,0 +1,239 @@
+<div class="container">
+  <div class="top">
+    <button type="button" class="btn btn-info">Spec List</button>
+    <button type="button" class="btn btn-info">Measurements & Pins</button>
+  </div>
+  <!-- Measurement Forms -->
+  <div class=" measurementContainer" >
+    <div class="card">
+      <div class="card-header"> 
+        Measurements
+      </div>
+      <br>
+      <!-- Update Delete Existing Mewasurements -->
+      <form  #measurementsForm="ngForm" >
+        <div class="input-group measurements" *ngFor="let  measurment of measurments">
+          <!-- <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">{{measurment.measurmentId}}</span>
+          </div> -->
+          <input 
+          type="number" 
+          class="form-control"
+          name="inches-{{measurment.measurmentId}}"
+          step=".01"
+          #inches="ngModel"
+          [ngModel]="measurment.inches"
+          (ngModelChange)="measurment.inches = $event"
+          >
+          <input 
+          type="number" 
+          class="form-control"
+          name="cm-{{measurment.measurmentId}}"
+          step=".01"
+          #cm="ngModel"
+          [ngModel]="measurment.cm"
+          (ngModelChange)="measurment.cm = $event"
+          >
+          <div class="input-group-append" id="button-addon4">
+            <button class="btn btn-outline-info" type="button" (click)="updateMeasurement(measurment)">UPDATE</button>
+            <button class="btn btn-outline-danger" type="button">DELETE</button>
+          </div>
+        </div>
+      </form>
+      <br>
+      <!-- Create New Measurement -->
+      
+      <form (ngSubmit)="createMeasurement(measurementForm)" #measurementForm="ngForm">
+        <fieldset>
+          <div class="card-header">New Measurement</div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">in or cm</span>
+            </div>
+            <input 
+            type="number" 
+            class="form-control"
+            name="measurementInput"
+            step=".01"
+            [ngModel]="measurementModel.input"
+            >
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <input 
+                type="radio"
+                id="in"
+                name="measurementType"
+                value="in"
+                [ngModel]="measurementModel.type"
+                
+                checked
+                >
+                <label for="in">in</label>
+                <input 
+                type="radio"
+                id="cm"
+                name="measurementType"
+                [ngModel]="measurementModel.type"
+                value="cm"
+                >
+                <label for="cm">cm</label>
+              </span>
+            </div> 
+        </div>
+        </fieldset>
+      
+      <button type="submit" class="btn btn-primary btn-sm">Save</button>
+    </form>
+      
+    </div>
+  </div>
+  <br>
+  <br>
+  <!-- Pin Forms -->
+  <div class=" pinContainer">
+    <div class="card">
+      <div class="card-header"> 
+        Pins
+      </div>
+      <!-- Update Delete Existing Pins -->
+      <form  #pinsForm="ngForm" >
+        
+        <div class="input-group">
+          <input 
+          type="text" 
+          class="form-control"
+          name="letter"
+          #letter="ngModel"
+          [ngModel]="pinModel.letter"
+          (ngModelChange)="pinModel.letter = $event"
+          >
+          <input 
+          type="text" 
+          class="form-control"
+          name="pinTitle"
+          #pinTitle="ngModel"
+          [ngModel]="pinModel.pinTitle"
+          (ngModelChange)="pinModel.pinTitle = $event"
+          >
+        </div>
+        <div class="input-group mb-3 blurb" id="blurb">
+          <textarea name="pantoneColors" id="blurb" class="form-control" cols="30" rows="2">
+
+          </textarea>
+        </div>  
+        <div class="input-group mb-3 blurb" id="blurb">
+          <textarea name="material" id="blurb" class="form-control" cols="30" rows="2">
+            
+          </textarea>
+        </div>
+        <div class="input-group " id="pinMeasurement">
+          <input 
+          type="number" 
+          class="form-control"
+          name="inches"
+          step=".01"
+          #inches="ngModel"
+          [ngModel]="measurementModel.inches"
+          (ngModelChange)="measurementModel.inches = $event"
+          >
+          <input 
+          type="number" 
+          class="form-control"
+          name="cm"
+          step=".01"
+          #cm="ngModel"
+          [ngModel]="measurementModel.cm"
+          (ngModelChange)="measurementModel.cm = $event"
+          >
+          <div class="input-group-append" id="button-addon4">
+            <button class="btn btn-outline-info" type="submit">UPDATE</button>
+            <button class="btn btn-outline-danger" type="button">DELETE</button>
+          </div>
+        </div>
+        <div class="input-group mb-3 blurb" id="blurb">
+          <textarea name="comment" id="blurb" class="form-control" cols="30" rows="3">
+            
+          </textarea>
+        </div>
+        <div class="input-group" >
+          <button class="btn btn-outline-info" type="submit">UPDATE</button>
+          <button class="btn btn-outline-danger" type="button">DELETE</button>
+        </div>
+      </form>
+      <br>
+      
+      <!-- New Pin -->
+      <form #pinForm="ngForm">
+        <fieldset>
+          <div class="card-header">New Pin</div>
+          <div class="input-group mb-3">
+            <input 
+            type="text" 
+            class="form-control" 
+            name="letter"
+            #letter="ngModel"
+            [ngModel]="pinModel.letter"
+            >
+            <input 
+            type="text" 
+            class="form-control" 
+            name="pinTitle"
+            #pinTitle="ngModel"
+            [ngModel]="pinModel.pinTitle">
+          </div>
+          <div class="input-group mb-3">
+            <textarea name="material" id="blurb" class="form-control" cols="30" rows="2" #material="ngModel" [ngModel]="pinModel.material">
+            
+            </textarea>
+          </div>
+          <div class="input-group mb-3">
+            <textarea name="pantoneColors" id="blurb" class="form-control" cols="30" rows="2" #pantoneColors="ngModel" [ngModel]="pinModel.pantoneColors">
+            
+            </textarea>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">in or cm</span>
+            </div>
+            <input 
+            type="number" 
+            class="form-control"
+            name="measurementInput"
+            step=".01"
+            [ngModel]="measurementModel.input"
+            >
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <input 
+                type="radio"
+                id="in"
+                name="measurementType"
+                value="in"
+                [ngModel]="measurementModel.type"
+                
+                checked
+                >
+                <label for="in">in</label>
+                <input 
+                type="radio"
+                id="cm"
+                name="measurementType"
+                [ngModel]="measurementModel.type"
+                value="cm"
+                >
+                <label for="cm">cm</label>
+              </span>
+            </div> 
+          </div>
+          <div class="input-group mb-3">
+            <textarea name="comment" id="blurb" class="form-control" cols="30" rows="2" #comment="ngModel" [ngModel]="pinModel.comment">
+            
+            </textarea>
+          </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary btn-sm">Save</button>
+      </form>
+    </div>
+  </div>
+  
+</div>

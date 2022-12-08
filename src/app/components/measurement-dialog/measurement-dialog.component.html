@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>Measurement</h2>
+<div mat-dialog-content>
+    <form>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">Letter</span>
+        </div>
+        <input type="text" class="form-control">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">in or cm</span>
+        </div>
+        <input type="text" class="form-control">
+        <div class="input-group-append">
+          <span class="input-group-text">
+            <input 
+            type="radio"
+            id="in"
+            name="measurementType"
+            value="in"
+            checked
+            >
+            <label for="in">in</label>
+            <input 
+            type="radio"
+            id="cm"
+            name="measurementType"
+            value="cm"
+            checked
+            >
+            <label for="in">cm</label>
+          </span>
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button [mat-dialog-close] (click)="saveMeasurement()">Save</button>
+        <button mat-button [mat-dialog-close] (click)="closeMeasurementDialog()">Cancel</button>
+    </div>
+    
+    
+    </form>
+
+</div>

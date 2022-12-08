@@ -1,0 +1,16 @@
+.container{
+    /* width: px; */
+    height: 400px;
+    margin-left: 0%;
+    margin-top: 100px;
+    /* display: inline-block; */
+    /* float: left; */
+    align-self: center
+    
+}
+
+.navbar{
+    height: 100%;
+    /* display: flexbox; */
+    border-radius: 100px;
+}
